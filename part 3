@@ -1,0 +1,26 @@
+int HOUSES = 5;
+int r;
+PImage[] photos = new PImage[HOUSES];
+PFont font;
+void setup() {
+  size(800,800);
+  for ( int i = 0; i< photos.length; i++) {
+    photos[i] = loadImage( i + ".jpg" ); 
+  }
+  textAlign(CENTER,CENTER);
+  imageMode(CENTER);
+}
+
+void draw() {
+  PFont font;
+font = createFont("AvenirNextLTPro-HeavyCn.otf", 32);
+textFont(font);
+  background(255);
+  for ( int i = 0; i< photos.length; i++) {
+  //image(photos[i], random(width), random(height));
+    r=int(random(5));
+      image(photos[r],random(width),random(height));
+  }
+   fill(255);
+  text("DREAM HOUSE", width/2, height/2);
+}
