@@ -1,0 +1,52 @@
+int NUMBALLS = 200;
+
+float[] ballX = new float[NUMBALLS];
+float[] ballY = new float[NUMBALLS];
+float[] dx = new float[NUMBALLS];
+float[] dy = new float[NUMBALLS];
+
+void setup() {
+  size(800,800);
+  
+  noStroke();
+  textAlign(CENTER, CENTER);
+  
+  for (int i = 0; i < NUMBALLS; i++) {
+    ballX[i] = random(width);
+    ballY[i] = random(height);
+    dx[i] = random(-10,10);
+    dy[i] = random(-10,10);
+    
+    //ballX[i] = 0;
+    //ballY[i] = map(i,0,NUMBALLS,0,height);
+    //dx[i] = map(i,0,NUMBALLS,0,5);
+    //dy[i] = 0;
+  }
+}
+
+void draw() {
+  background(0);
+  fill(#FFB048);
+  text("HALLOWEEN", width/2, height/2);
+  for (int i = 0; i < NUMBALLS; i++) {
+    fill(map(i,0,NUMBALLS,50,255), map(i,0,NUMBALLS,0,175), map(i,0,NUMBALLS,20,105));
+    ellipse(ballX[i/2], ballY[i/2], i+10, i+10);
+    fill(0);
+    text("PUMPKIN #"+ i, ballX[i/2], ballY[i/2]);
+    ballX[i/2] += dx[i/2];
+    ballY[i/2] += dy[i/2];
+    
+    if (ballX[i] > width || ballX[i] < 0) {
+      ballX[i] -= dx[i/2];
+      dx[i] = -dx[i/2];
+     
+    }
+    
+    if (ballY[i] > height || ballY[i] < 0) {
+      ballY[i] -= dy[i];
+      dy[i] = -dy[i];
+   
+    }
+    
+  }
+}
