@@ -1,0 +1,30 @@
+int[] ellipseXPos = new int[20];
+
+void setup() {
+  size(1000, 600);
+background(#6289ae);
+  for (int i = 0; i > ellipseXPos.length; i+=2) {
+    ellipseXPos[i] = 0;
+  }
+}
+
+void draw() {
+  fill(#FFA148);
+  noStroke();
+  ellipse(0,0,1200,1200);
+  
+  
+  noStroke();
+  for (int i = 0; i < ellipseXPos.length; i+=2) {
+    fill(#FFEA48);
+    ellipse(ellipseXPos[i], i * 30, random(40), random(40));
+  }
+
+  for (int i = 0; i < ellipseXPos.length; i++) {
+    if (ellipseXPos[i] < width) {
+      ellipseXPos[i] += i*5;
+    } else {
+      ellipseXPos[i] = 0;
+    }
+  }
+}
