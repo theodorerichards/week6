@@ -1,0 +1,36 @@
+float[] xPosArr = new float[8];
+float[] yPosArr = new float[8];
+
+
+void setup() {
+  size(1200, 600);
+  noStroke();
+
+  for (int i = 0; i < xPosArr.length; i+=2) {
+    xPosArr[i] = 200+ i * 80;
+  }
+  for (int j = 0; j < yPosArr.length; j+=2) {
+    yPosArr[j] = 200 + j * 80;
+  }
+}
+
+void draw() {
+  background(#45628a);
+  
+  fill(255);
+  rect(width-100, 0, 100, height);
+  fill(0);
+  text("FINISH", width-68,height/2);
+  for (int i = 0; i < xPosArr.length; i++) {
+    xPosArr[i] += random(-i*2.7, i*3);
+
+    fill((map(xPosArr[i], 0, width, 0, 200)), (map(xPosArr[i], 0, width, 0, 230)), (map(xPosArr[i], 0, width, 35, 120)));
+    ellipse(xPosArr[i], height/4, 100, 100);
+  }
+  for (int j = 0; j < yPosArr.length; j++) {
+    yPosArr[j] += random(-j*2.7, j*3);
+
+    fill((map(yPosArr[j], 0, height, 0, 200)), (map(yPosArr[j], 0, height, 0, 150)), (map(yPosArr[j], 0, height, 35, 100)));
+    ellipse(yPosArr[j], height*3/4, 100, 100);
+  }
+}
